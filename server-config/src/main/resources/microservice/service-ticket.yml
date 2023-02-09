@@ -1,0 +1,11 @@
+server:
+  port: 8502
+
+spring:
+  application:
+    name: service-ticket
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8508/eureka/

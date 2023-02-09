@@ -11,7 +11,9 @@
 		<module>service-parent</module>
 		<module>service-account</module>
         <module>server-config</module>
-	</modules>
+		<module>server-eureka</module>
+        <module>service-ticket</module>
+    </modules>
 	<packaging>pom</packaging>
 
 	<name>spring-cloud-microservice</name>

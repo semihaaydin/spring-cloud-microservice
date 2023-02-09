@@ -2,13 +2,13 @@ package com.saydin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.config.server.EnableConfigServer;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-@EnableConfigServer
 @SpringBootApplication
-public class ServerConfigApplication {
+@EnableEurekaClient
+public class ServiceTicketApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ServerConfigApplication.class,args);
+        SpringApplication.run(ServiceTicketApplication.class,args);
     }
 }
