@@ -1,5 +1,6 @@
 package com.saydin.ticket.service.impl;
 
+import com.saydin.client.AccountServiceClient;
 import com.saydin.ticket.entity.Ticket;
 import com.saydin.ticket.entity.TicketDto;
 import com.saydin.ticket.repo.TicketRepository;
@@ -22,6 +23,7 @@ public class TicketServiceImpl implements TicketService {
     private final ModelMapper modelMapper;
     private final TicketRepository ticketRepository; //hem mysql hem de elastic searche kayıt yazacağız.
    // private final TicketElasticRepository ticketElasticRepository;
+    private final AccountServiceClient accountServiceClient;
 
     @Override
     @Transactional
@@ -31,7 +33,8 @@ public class TicketServiceImpl implements TicketService {
         Ticket ticket= modelMapper.map(ticketDto, Ticket.class);
         ticket=ticketRepository.save(ticket);
 
-
+        //Two service connect with feign client
+        accountServiceClient.get(ticketDto.getId());
         //elastic save
    /*     TicketElasticModel ticketElasticModel= TicketElasticModel.builder()
                 .description(ticket.getDescription())

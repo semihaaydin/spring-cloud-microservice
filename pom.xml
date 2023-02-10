@@ -13,6 +13,7 @@
         <module>server-config</module>
 		<module>server-eureka</module>
         <module>service-ticket</module>
+        <module>service-contract</module>
     </modules>
 	<packaging>pom</packaging>
 

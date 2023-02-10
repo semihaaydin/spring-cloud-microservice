@@ -35,6 +35,12 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.saydin</groupId>
+            <artifactId>service-contract</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
     </dependencies>
 
 
