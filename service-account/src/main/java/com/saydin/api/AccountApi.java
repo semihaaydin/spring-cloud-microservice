@@ -4,6 +4,7 @@ import com.saydin.dto.AccountDto;
 import com.saydin.entity.Account;
 import com.saydin.service.AccountService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +14,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/account")
-@RequiredArgsConstructor
 public class AccountApi {
 
+    @Autowired
     private final AccountService service;
+
+    public AccountApi(AccountService service) {
+        this.service = service;
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<AccountDto> get(@PathVariable("id") String id) {
@@ -24,7 +29,7 @@ public class AccountApi {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<Slice<Account>> findAll(Pageable pageable) {
+    public ResponseEntity<Slice<AccountDto>> findAll(Pageable pageable) {
         return ResponseEntity.ok(service.findAll(pageable));
     }
 

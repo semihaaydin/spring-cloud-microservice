@@ -5,6 +5,7 @@ import com.saydin.entity.Account;
 import com.saydin.repo.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
@@ -17,21 +18,28 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class AccountService {
 
+    @Autowired
     private final AccountRepository accountRepository;
+
+    @Autowired
     private final ModelMapper modelMapper;
+
+    public AccountService(AccountRepository accountRepository, ModelMapper modelMapper) {
+        this.accountRepository = accountRepository;
+        this.modelMapper = modelMapper;
+    }
 
     public AccountDto get(String id) {
         Account account= accountRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
         return modelMapper.map(account,AccountDto.class);
     }
 
-    public Slice<Account> findAll(Pageable pageable) {
-        Slice<Account> accounts = (Slice<Account>) accountRepository.findAll(pageable)
+    public Slice<AccountDto> findAll(Pageable pageable) {
+        Slice<AccountDto> accounts = (Slice<AccountDto>) accountRepository.findAll(pageable)
                 .stream()
-                .map(user -> modelMapper.map(user, Account.class))
+                .map(user -> modelMapper.map(user, AccountDto.class))
                 .collect(Collectors.toList());
         return accounts;
     }
