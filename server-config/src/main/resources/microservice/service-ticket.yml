@@ -5,6 +5,16 @@ spring:
   application:
     name: service-ticket
 
+  rabbitmq:
+    username: guest
+    password: guest
+
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: msqueue
+
   datasource:
     url: jdbc:mysql://localhost:3306/microserviceapp
     username: root

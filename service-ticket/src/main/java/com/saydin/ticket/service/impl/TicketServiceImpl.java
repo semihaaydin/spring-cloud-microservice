@@ -4,6 +4,7 @@ import com.saydin.client.AccountServiceClient;
 import com.saydin.ticket.entity.Ticket;
 import com.saydin.ticket.entity.TicketDto;
 import com.saydin.ticket.repo.TicketRepository;
+import com.saydin.ticket.service.TicketNotificationService;
 import com.saydin.ticket.service.TicketService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -24,6 +25,7 @@ public class TicketServiceImpl implements TicketService {
     private final TicketRepository ticketRepository; //hem mysql hem de elastic searche kayıt yazacağız.
    // private final TicketElasticRepository ticketElasticRepository;
     private final AccountServiceClient accountServiceClient;
+    private final TicketNotificationService ticketNotificationService;
 
     @Override
     @Transactional
@@ -46,6 +48,7 @@ public class TicketServiceImpl implements TicketService {
      //   ticketElasticRepository.save(ticketElasticModel);
 
         ticketDto.setId(ticket.getId());
+        ticketNotificationService.sendToQueue(ticket);
         return ticketDto;
     }
 
