@@ -14,7 +14,8 @@
 		<module>server-eureka</module>
         <module>service-ticket</module>
         <module>service-contract</module>
-    </modules>
+		<module>service-notification</module>
+	</modules>
 	<packaging>pom</packaging>
 
 	<name>spring-cloud-microservice</name>
