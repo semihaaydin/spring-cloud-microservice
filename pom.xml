@@ -16,6 +16,8 @@
         <module>service-contract</module>
 		<module>service-notification</module>
 		<module>server-zipkin</module>
+		<module>server-hystrix</module>
+		<module>server-gateway</module>
 	</modules>
 	<packaging>pom</packaging>
 
