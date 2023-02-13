@@ -15,6 +15,7 @@
         <module>service-ticket</module>
         <module>service-contract</module>
 		<module>service-notification</module>
+		<module>server-zipkin</module>
 	</modules>
 	<packaging>pom</packaging>
 
