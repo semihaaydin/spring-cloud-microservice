@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: service-account
+          uri: lb://ACCOUNT-SERVICE
+          predicates:
+            - Path=/account/**
+          filters:
+            - RewritePath=/(?<segment>.*), /$\{segment}
+            - name: Hystrix
+              args:
+                name: service-account
+                fallbackUri: forward:/fb/account
+
+        - id: service-ticket
+          uri: lb://TICKET-SERVICE
+          predicates:
+            - Path=/ticket/**
+          filters:
+            - RewritePath=/(?<segment>.*), /$\{segment}
+            - name: Hystrix
+              args:
+                name: service-ticket
+                fallbackUri: forward:/fb/ticket
+server:
+  port: 8088
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8508/eureka
+    register-with-eureka: false
+  instance:
+    preferIpAddress: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

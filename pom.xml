@@ -10,13 +10,15 @@
 	<modules>
 		<module>service-parent</module>
 		<module>service-account</module>
-        <module>server-config</module>
+    <module>server-config</module>
 		<module>server-eureka</module>
-        <module>service-ticket</module>
-        <module>service-contract</module>
+    <module>service-ticket</module>
+    <module>service-contract</module>
 		<module>service-notification</module>
 		<module>server-zipkin</module>
-		<module>server-spring-boot-admin</module>
+		<module>server-hystrix</module>
+		<module>server-gateway</module>
+    <module>server-spring-boot-admin</module>
 	</modules>
 	<packaging>pom</packaging>
 
