@@ -16,6 +16,7 @@
         <module>service-contract</module>
 		<module>service-notification</module>
 		<module>server-zipkin</module>
+		<module>server-spring-boot-admin</module>
 	</modules>
 	<packaging>pom</packaging>
 
